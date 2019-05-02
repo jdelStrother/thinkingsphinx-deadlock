@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audit Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip address</th>
+      <th>Path</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @audit_logs.each do |audit_log| %>
+      <tr>
+        <td><%= audit_log.ip_address %></td>
+        <td><%= audit_log.path %></td>
+        <td><%= link_to 'Show', audit_log %></td>
+        <td><%= link_to 'Edit', edit_audit_log_path(audit_log) %></td>
+        <td><%= link_to 'Destroy', audit_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Audit Log', new_audit_log_path %>

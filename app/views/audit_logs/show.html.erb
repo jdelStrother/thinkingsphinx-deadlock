@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ip address:</strong>
+  <%= @audit_log.ip_address %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @audit_log.path %>
+</p>
+
+<%= link_to 'Edit', edit_audit_log_path(@audit_log) %> |
+<%= link_to 'Back', audit_logs_path %>
