@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_05_02_085639) do
 
-  create_table "audit_logs", force: :cascade do |t|
+  create_table "audit_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ip_address"
     t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
