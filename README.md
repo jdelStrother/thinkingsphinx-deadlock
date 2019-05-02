@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Demo of deadlock in ThinkingSphinx.  The only interesting code is in application_controller.rb
 
-Things you may want to cover:
+* Prepare a database: `bin/rails db:create db:migrate`
 
-* Ruby version
+* Start the server: `bin/rails s`
 
-* System dependencies
+* Run `touch app/models/*; curl -s -o /dev/null localhost:3000/posts & curl -s -o /dev/null localhost:3000/posts` a few times until you (hopefully) reproduce the deadlock.  At this point you can view localhost:3000/rails/locks to see the deadlock
 
-* Configuration
+* After 15 seconds a timeout will kill the request
 
-* Database creation
+* Try switching to the ActiveSupport::Concurrency::LoadInterlockAwareMonitor mutex with `curl localhost:3000/posts?set_mutex=fixed`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run `touch app/models/*; curl -s -o /dev/null localhost:3000/posts & curl -s -o /dev/null localhost:3000/posts` a bunch of times.  Hopefully there'll be no deadlocks.
